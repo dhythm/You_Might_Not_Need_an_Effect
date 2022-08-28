@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,10 @@ function App() {
       <div className="card">
         <ul>
           {[
-            { text: "Updating state based on props or state", path: "" },
+            {
+              text: "Updating state based on props or state",
+              path: "/updating-state",
+            },
             { text: "Caching expensive calculations", path: "" },
             { text: "Resetting all state when a props changes", path: "" },
             { text: "Adjusting some state when a props changes", path: "" },
@@ -36,7 +40,7 @@ function App() {
             { text: "Fetching data", path: "" },
           ].map((v, i) => (
             <li key={i}>
-              <a href={v.path}>{v.text}</a>
+              <Link to={v.path}>{v.text}</Link>
             </li>
           ))}
         </ul>
