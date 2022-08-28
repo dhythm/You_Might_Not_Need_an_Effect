@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { CachingCalculationsSample } from "./routes/caching-calculations";
+import { ResettingAllStateSample } from "./routes/resetting-all-state";
 import { UpdatingStateSample } from "./routes/updating-state";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -16,6 +17,18 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           path="caching-calculations"
           element={<CachingCalculationsSample />}
         />
+        <Route
+          path="resetting-all-state"
+          element={<ResettingAllStateSample />}
+        />
+        <Route path="adjusting-some-state" element={<></>} />
+        <Route path="sharing-logic" element={<></>} />
+        <Route path="sending-post-request" element={<></>} />
+        <Route path="chains-of-computations" element={<></>} />
+        <Route path="initializing-application" element={<></>} />
+        <Route path="notifying-parent" element={<></>} />
+        <Route path="subscribing-to-external-store" element={<></>} />
+        <Route path="fetching-data" element={<></>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

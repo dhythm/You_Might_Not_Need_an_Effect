@@ -28,19 +28,34 @@ function App() {
               text: "Caching expensive calculations",
               path: "/caching-calculations",
             },
-            { text: "Resetting all state when a props changes", path: "" },
-            { text: "Adjusting some state when a props changes", path: "" },
-            { text: "Sharing logic between event handlers", path: "" },
-            { text: "Sending a POST request", path: "" },
-            { text: "Chains of computations", path: "" },
-            { text: "Initializing the application", path: "" },
+            {
+              text: "Resetting all state when a props changes",
+              path: "/resetting-all-state",
+            },
+            {
+              text: "Adjusting some state when a props changes",
+              path: "adjusting-some-state",
+            },
+            {
+              text: "Sharing logic between event handlers",
+              path: "sharing-logic",
+            },
+            { text: "Sending a POST request", path: "sending-post-request" },
+            { text: "Chains of computations", path: "chains-of-computations" },
+            {
+              text: "Initializing the application",
+              path: "initializing-application",
+            },
             {
               text: "Notifying parent components about state changes",
-              path: "",
+              path: "notifying-parent",
             },
-            { text: "Passing data to the parent", path: "" },
-            { text: "Subscribing to an external store", path: "" },
-            { text: "Fetching data", path: "" },
+            { text: "Passing data to the parent", path: "passing-to-parent" },
+            {
+              text: "Subscribing to an external store",
+              path: "subscribing-to-external-store",
+            },
+            { text: "Fetching data", path: "fetching-data" },
           ].map((v, i) => (
             <li key={i}>
               <Link to={v.path}>{v.text}</Link>

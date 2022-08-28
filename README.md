@@ -28,7 +28,9 @@ Effects は外部のシステムとデータを同期させる場合に必要と
 ### Caching expensive calculations
 
 [Updating state based on props or state](#updating-state-based-on-props-or-state) と同じ内容。
-検索ボックスで対象のリストをフィルターした場合にも setState は不要という内容です。
+たとえば検索ボックスで対象のリストをフィルターした場合にも setState は不要という内容です。
+
+### Resetting all state when a prop changes
 
 ## 参考
 
