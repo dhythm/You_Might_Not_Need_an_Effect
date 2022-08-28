@@ -1,7 +1,7 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
 import { Link } from "react-router-dom";
+import "./App.css";
+import reactLogo from "./assets/react.svg";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,7 +24,10 @@ function App() {
               text: "Updating state based on props or state",
               path: "/updating-state",
             },
-            { text: "Caching expensive calculations", path: "" },
+            {
+              text: "Caching expensive calculations",
+              path: "/caching-calculations",
+            },
             { text: "Resetting all state when a props changes", path: "" },
             { text: "Adjusting some state when a props changes", path: "" },
             { text: "Sharing logic between event handlers", path: "" },

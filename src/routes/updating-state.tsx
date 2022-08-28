@@ -1,30 +1,20 @@
 import { useEffect, useState } from "react";
 
-export const UpdatingStateSample = () => {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Smith");
-  const [fullName, setFullName] = useState("");
+export const UpdatingStateSample = () => (
+  <>
+    <div style={{ textAlign: "start" }}>
+      <h4>Bad</h4>
+      <Bad />
+    </div>
 
-  useEffect(() => {
-    setFullName(firstName + " " + lastName);
-  }, [firstName, lastName]);
+    <hr style={{ borderTop: "2px dotted #bbb" }}></hr>
 
-  return (
-    <>
-      <div style={{ textAlign: "start" }}>
-        <h4>Bad</h4>
-        <Bad />
-      </div>
-
-      <hr style={{ borderTop: "2px dotted #bbb" }}></hr>
-
-      <div style={{ textAlign: "start" }}>
-        <h4>Good</h4>
-        <Good />
-      </div>
-    </>
-  );
-};
+    <div style={{ textAlign: "start" }}>
+      <h4>Good</h4>
+      <Good />
+    </div>
+  </>
+);
 
 const Bad = () => {
   const [firstName, setFirstName] = useState("John");

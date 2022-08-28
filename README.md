@@ -23,6 +23,13 @@ Effects は外部のシステムとデータを同期させる場合に必要と
 
 ### Updating state based on props or state
 
+フォームで入力される `firstName`, `lastName` から `fullName` を取得したい場合、useEffect のなかで setState しなくても動作するという例です。
+
+### Caching expensive calculations
+
+[Updating state based on props or state](#updating-state-based-on-props-or-state) と同じ内容。
+検索ボックスで対象のリストをフィルターした場合にも setState は不要という内容です。
+
 ## 参考
 
 You Might Not Need an Effect
