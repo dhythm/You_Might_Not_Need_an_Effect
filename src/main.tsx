@@ -6,6 +6,7 @@ import "./index.css";
 import { AdjustingSomeStateSample } from "./routes/adjusting-some-state";
 import { CachingCalculationsSample } from "./routes/caching-calculations";
 import { ResettingAllStateSample } from "./routes/resetting-all-state";
+import { SharingLogicSample } from "./routes/sharing-logic";
 import { UpdatingStateSample } from "./routes/updating-state";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -26,7 +27,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           path="adjusting-some-state"
           element={<AdjustingSomeStateSample />}
         />
-        <Route path="sharing-logic" element={<></>} />
+        <Route path="sharing-logic" element={<SharingLogicSample />} />
         <Route path="sending-post-request" element={<></>} />
         <Route path="chains-of-computations" element={<></>} />
         <Route path="initializing-application" element={<></>} />
