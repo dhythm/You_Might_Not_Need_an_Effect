@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const CachingCalculationsSample = () => (
   <>
@@ -37,7 +37,10 @@ const Bad = () => {
 
 const Good = () => {
   const [filterText, setFilterText] = useState("");
-  const visibleTodos = getFilteredTodos(todos, filterText);
+  const visibleTodos = useMemo(
+    () => getFilteredTodos(todos, filterText),
+    [todos, filterText]
+  );
 
   return (
     <>

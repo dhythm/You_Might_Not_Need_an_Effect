@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+import { AdjustingSomeStateSample } from "./routes/adjusting-some-state";
 import { CachingCalculationsSample } from "./routes/caching-calculations";
 import { ResettingAllStateSample } from "./routes/resetting-all-state";
 import { UpdatingStateSample } from "./routes/updating-state";
@@ -21,7 +22,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           path="resetting-all-state"
           element={<ResettingAllStateSample />}
         />
-        <Route path="adjusting-some-state" element={<></>} />
+        <Route
+          path="adjusting-some-state"
+          element={<AdjustingSomeStateSample />}
+        />
         <Route path="sharing-logic" element={<></>} />
         <Route path="sending-post-request" element={<></>} />
         <Route path="chains-of-computations" element={<></>} />
