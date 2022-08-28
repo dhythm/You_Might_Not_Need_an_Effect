@@ -58,9 +58,22 @@ best パターンは、useState すら使わずにレンダリングのかです
 
 ### Chains of computations
 
+Effects の結果を別の Effects で利用する（chain of Effects）はレンダリングが複数回起こるなど、問題を引き起こしやすいのでやめましょうという内容です。
+
+ただし、イベントハンドラーの中で次の状態を計算できないようなケースでは chain of Effects が有効な場合もあります。
+たとえば複数のドロップダウンのあるフォームで、選択内容によって次のドロップダウンが変わるパターンです。このようなケースは　 chain of Effects でデータをフェッチする方法が適切になります。
+なぜなら"ネットワークと同期する目的"（＝ Effects を使うモチベーション）だからです。
+
 ### Initializing the application
 
+アプリケーションがロードされた時に一度だけ実行したいロジックがあるケースについて紹介されています。
+
+[How to handle the Effect firing twice in development?](https://beta.reactjs.org/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) に記載があるように、開発環境では二度 mount されてしまい、デバッグが複雑になる可能性があります。（本番環境では remount は発生しない）
+コンポーネントがマウントされた時に一度ではなく、アプリケーションがロードされた時に一度実行することを保証したいロジックは、実行済みかどうかのチェックをおこなう必要があります。
+
 ### Notifying parent components about state changes
+
+このケースも、Effects ではなくイベントハンドラーを使うことを推奨しています。
 
 ### Passing data to the parent
 
