@@ -74,6 +74,7 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 ### Notifying parent components about state changes
 
 このケースも、Effects ではなくイベントハンドラーを使うことを推奨しています。
+さらに、今回のようなケースでは、状態を親コンポーネントに移譲することにより、子コンポーネントは UI コンポーネントとして振る舞うことが可能になります。
 
 ### Passing data to the parent
 
