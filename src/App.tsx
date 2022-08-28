@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
@@ -17,18 +17,35 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <ul>
+          {[
+            { text: "Updating state based on props or state", path: "" },
+            { text: "Caching expensive calculations", path: "" },
+            { text: "Resetting all state when a props changes", path: "" },
+            { text: "Adjusting some state when a props changes", path: "" },
+            { text: "Sharing logic between event handlers", path: "" },
+            { text: "Sending a POST request", path: "" },
+            { text: "Chains of computations", path: "" },
+            { text: "Initializing the application", path: "" },
+            {
+              text: "Notifying parent components about state changes",
+              path: "",
+            },
+            { text: "Passing data to the parent", path: "" },
+            { text: "Subscribing to an external store", path: "" },
+            { text: "Fetching data", path: "" },
+          ].map((v, i) => (
+            <li key={i}>
+              <a href={v.path}>{v.text}</a>
+            </li>
+          ))}
+        </ul>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
