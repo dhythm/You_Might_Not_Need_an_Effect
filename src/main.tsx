@@ -9,6 +9,7 @@ import { ChainsOfComputationsSample } from "./routes/chains-of-computations";
 import { FetchingDataSample } from "./routes/fetching-data";
 import { InitializingApplicationSample } from "./routes/initializing-application";
 import { NotifyingParentSample } from "./routes/notifying-parent";
+import { PassingParentSample } from "./routes/passing-to-parent";
 import { ResettingAllStateSample } from "./routes/resetting-all-state";
 import { SendingPostRequestSample } from "./routes/sending-post-request";
 import { SharingLogicSample } from "./routes/sharing-logic";
@@ -47,6 +48,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           element={<InitializingApplicationSample />}
         />
         <Route path="notifying-parent" element={<NotifyingParentSample />} />
+        <Route path="passing-to-parent" element={<PassingParentSample />} />
         <Route
           path="subscribing-to-external-store"
           element={<SubscribingToExternalStoreSample />}

@@ -78,6 +78,8 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 
 ### Passing data to the parent
 
+子コンポーネントでデータを取得しそれを親に渡すのであれば、React のデータフローとしては親コンポーネントで取得して、データを子コンポーネントに渡す方が良いという手法の紹介です。
+
 ### Subscribing to an external store
 
 ### Fetching data
