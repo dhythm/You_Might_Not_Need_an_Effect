@@ -50,6 +50,24 @@ best パターンは、useState すら使わずにレンダリングのかです
 
 複数のイベントハンドラーの結果を共通化したい場合にも useEffect ではなく、function を使いべきであるという事例が紹介されています。
 
+### Sending a POST request
+
+ここでは二種類の POST リクエストについて紹介されています。
+ひとつはコンポーネントがマウントされた時の分析情報の送信 POST、そしてもうひとつは submit ボタンを押した時の　 POST リクエストです。
+前者は useEffect のユースケースとしては適切です。一方、後者は避けるべきケースだと紹介されています。
+
+### Chains of computations
+
+### Initializing the application
+
+### Notifying parent components about state changes
+
+### Passing data to the parent
+
+### Subscribing to an external store
+
+### Fetching data
+
 ## 参考
 
 You Might Not Need an Effect

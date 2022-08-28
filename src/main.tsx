@@ -5,8 +5,14 @@ import App from "./App";
 import "./index.css";
 import { AdjustingSomeStateSample } from "./routes/adjusting-some-state";
 import { CachingCalculationsSample } from "./routes/caching-calculations";
+import { ChainsOfComputationsSample } from "./routes/chains-of-computations";
+import { FetchingDataSample } from "./routes/fetching-data";
+import { InitializingApplicationSample } from "./routes/initializing-application";
+import { NotifyingParentSample } from "./routes/notifying-parent";
 import { ResettingAllStateSample } from "./routes/resetting-all-state";
+import { SendingPostRequestSample } from "./routes/sending-post-request";
 import { SharingLogicSample } from "./routes/sharing-logic";
+import { SubscribingToExternalStoreSample } from "./routes/subscribing-to-external-store";
 import { UpdatingStateSample } from "./routes/updating-state";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -28,12 +34,24 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           element={<AdjustingSomeStateSample />}
         />
         <Route path="sharing-logic" element={<SharingLogicSample />} />
-        <Route path="sending-post-request" element={<></>} />
-        <Route path="chains-of-computations" element={<></>} />
-        <Route path="initializing-application" element={<></>} />
-        <Route path="notifying-parent" element={<></>} />
-        <Route path="subscribing-to-external-store" element={<></>} />
-        <Route path="fetching-data" element={<></>} />
+        <Route
+          path="sending-post-request"
+          element={<SendingPostRequestSample />}
+        />
+        <Route
+          path="chains-of-computations"
+          element={<ChainsOfComputationsSample />}
+        />
+        <Route
+          path="initializing-application"
+          element={<InitializingApplicationSample />}
+        />
+        <Route path="notifying-parent" element={<NotifyingParentSample />} />
+        <Route
+          path="subscribing-to-external-store"
+          element={<SubscribingToExternalStoreSample />}
+        />
+        <Route path="fetching-data" element={<FetchingDataSample />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
