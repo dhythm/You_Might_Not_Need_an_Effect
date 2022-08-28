@@ -9,6 +9,33 @@ React Docs (BETA) の[公式](https://beta.reactjs.org/)で紹介されている
 
 ## useEffect とは
 
+React にはいくつかの built-in Hooks が存在する。
+その中で、Basic Hooks のひとつであり、Class Component の lifecycle の代替としてもよく使われる Hooks です。
+ただし、[David Khourshid の講演](https://www.youtube.com/watch?v=RW9TVhmxu6Q)では、"useEffect is not a lifecycle hook" と紹介されています。
+この点に関して React team の Dan Abramov も Twitter にて、"The mental model is synchronization. Not lifecycle." という投稿を残しています。
+
+同講演の中でも "What is useEffect() for?" という問いかけに対して、"Synchronization"（外部システムとの同期を取るためのもの）と語っています。
+（React Docs (BETA) でもそのことは[記載](https://beta.reactjs.org/learn/synchronizing-with-effects)されている）
+
+- Basic Hooks
+  - useState
+  - useEffect ← これ
+  - useContext
+- Additional Hooks
+  - useReducer
+  - useCallback
+  - useMemo
+  - useRef
+  - useImperativeHandle
+  - useLayoutEffect
+  - useDebugValue
+  - useDeferredValue
+  - useTransition
+  - useId
+- Library Hooks
+  - useSyncExternalStore
+  - useInsertionEffect
+
 ## useEffect が不要なパターン
 
 - レンダリングでデータを変更する場合
@@ -81,6 +108,8 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 子コンポーネントでデータを取得しそれを親に渡すのであれば、React のデータフローとしては親コンポーネントで取得して、データを子コンポーネントに渡す方が良いという手法の紹介です。
 
 ### Subscribing to an external store
+
+かつて useEffect の中で subscribe / unsubscribe していた処理は、 useSyncExternalStore を使って書けるようになったという紹介です。
 
 ### Fetching data
 

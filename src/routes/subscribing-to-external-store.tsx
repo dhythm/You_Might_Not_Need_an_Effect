@@ -1,3 +1,5 @@
+import { useEffect, useState, useSyncExternalStore } from "react";
+
 export const SubscribingToExternalStoreSample = () => (
   <>
     <div style={{ textAlign: "start" }}>
@@ -15,9 +17,48 @@ export const SubscribingToExternalStoreSample = () => (
 );
 
 const Bad = () => {
-  return <></>;
+  const isOnline = useBadOnlineStatus();
+  return <p>{isOnline ? "✅" : "🔴"}</p>;
 };
 
 const Good = () => {
-  return <></>;
+  const isOnline = useGoodOnlineStatus();
+  return <p>{isOnline ? "✅" : "🔴"}</p>;
+};
+
+const useBadOnlineStatus = () => {
+  const [isOnline, setIsOnline] = useState(true);
+  useEffect(() => {
+    const updateState = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    updateState();
+
+    window.addEventListener("online", updateState);
+    window.addEventListener("offline", updateState);
+    return () => {
+      window.removeEventListener("online", updateState);
+      window.removeEventListener("offline", updateState);
+    };
+  }, []);
+
+  return isOnline;
+};
+
+const subscribe = (callback: any) => {
+  window.addEventListener("online", callback);
+  window.addEventListener("offline", callback);
+  return () => {
+    window.removeEventListener("online", callback);
+    window.removeEventListener("offline", callback);
+  };
+};
+
+const useGoodOnlineStatus = () => {
+  return useSyncExternalStore(
+    subscribe, // React won't resubscribe for as long as you pass the same function
+    () => navigator.onLine, // How to get the value on the client
+    () => true // How to get the value on the server
+  );
 };

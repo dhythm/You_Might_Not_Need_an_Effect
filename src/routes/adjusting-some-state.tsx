@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 export const AdjustingSomeStateSample = () => (
   <>
@@ -79,6 +79,7 @@ type ListProps = {
   items: string[];
 };
 const BadList = ({ items }: ListProps) => {
+  const id = useId();
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState<string | null>(null);
 
@@ -89,12 +90,13 @@ const BadList = ({ items }: ListProps) => {
   return (
     <>
       <input
+        id={id}
         type="checkbox"
         value="isReverse"
         onClick={(e: any) => setIsReverse(e.target.checked)}
         checked={isReverse}
       />
-      <label htmlFor="isReverse">reverse?</label>
+      <label htmlFor={id}>reverse?</label>
       {items
         .sort((a, b) => (a < b ? -1 : 1))
         .sort(() => (isReverse ? -1 : 1))
@@ -118,6 +120,7 @@ const BadList = ({ items }: ListProps) => {
 };
 
 const BetterList = ({ items }: ListProps) => {
+  const id = useId();
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState<string | null>(null);
 
@@ -130,12 +133,13 @@ const BetterList = ({ items }: ListProps) => {
   return (
     <>
       <input
+        id={id}
         type="checkbox"
         value="isReverse"
         onClick={(e: any) => setIsReverse(e.target.checked)}
         checked={isReverse}
       />
-      <label htmlFor="isReverse">reverse?</label>
+      <label htmlFor={id}>reverse?</label>
       {items
         .sort((a, b) => (a < b ? -1 : 1))
         .sort(() => (isReverse ? -1 : 1))
@@ -159,6 +163,7 @@ const BetterList = ({ items }: ListProps) => {
 };
 
 const BestList = ({ items }: ListProps) => {
+  const id = useId();
   const [isReverse, setIsReverse] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -167,12 +172,13 @@ const BestList = ({ items }: ListProps) => {
   return (
     <>
       <input
+        id={id}
         type="checkbox"
         value="isReverse"
         onClick={(e: any) => setIsReverse(e.target.checked)}
         checked={isReverse}
       />
-      <label htmlFor="isReverse">reverse?</label>
+      <label htmlFor={id}>reverse?</label>
       {items
         .sort((a, b) => (a < b ? -1 : 1))
         .sort(() => (isReverse ? -1 : 1))

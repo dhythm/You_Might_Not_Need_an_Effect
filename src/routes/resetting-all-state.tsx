@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 export const ResettingAllStateSample = () => (
   <>
@@ -60,6 +60,7 @@ type ProfileProps = {
   userId: string;
 };
 const BadProfile = ({ userId }: ProfileProps) => {
+  const id = useId();
   const [comment, setComment] = useState("");
 
   useEffect(() => {
@@ -72,11 +73,11 @@ const BadProfile = ({ userId }: ProfileProps) => {
       <p>name: {user?.name}</p>
       <p>comment: {comment}</p>
       <form
-        id="form"
+        id={id}
         onSubmit={(e: any) => {
           e.preventDefault();
           setComment(e.target[0].value);
-          (document.getElementById("form") as HTMLFormElement).reset();
+          (document.getElementById(id) as HTMLFormElement).reset();
         }}
       >
         <input name="comment" />
@@ -87,6 +88,7 @@ const BadProfile = ({ userId }: ProfileProps) => {
 };
 
 const GoodProfile = ({ userId }: ProfileProps) => {
+  const id = useId();
   const [comment, setComment] = useState("");
   const user = users.find((user) => user.id === userId);
 
@@ -95,11 +97,11 @@ const GoodProfile = ({ userId }: ProfileProps) => {
       <p>name: {user?.name}</p>
       <p>comment: {comment}</p>
       <form
-        id="form"
+        id={id}
         onSubmit={(e: any) => {
           e.preventDefault();
           setComment(e.target[0].value);
-          (document.getElementById("form") as HTMLFormElement).reset();
+          (document.getElementById(id) as HTMLFormElement).reset();
         }}
       >
         <input name="comment" />

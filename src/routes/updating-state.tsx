@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 export const UpdatingStateSample = () => (
   <>
@@ -17,6 +17,7 @@ export const UpdatingStateSample = () => (
 );
 
 const Bad = () => {
+  const id = useId();
   const [firstName, setFirstName] = useState("John");
   const [lastName, setLastName] = useState("Smith");
   const [fullName, setFullName] = useState("");
@@ -27,22 +28,33 @@ const Bad = () => {
 
   return (
     <form>
-      <input
-        name="firstName"
-        value={firstName}
-        onChange={(event) => setFirstName(event.target.value)}
-      />
-      <input
-        name="lastName"
-        value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
-      />
+      <label htmlFor={id + "-firstName"}>First Name</label>
+      <div>
+        <input
+          id={id + "-firstName"}
+          name="firstName"
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
+        />
+      </div>
+
+      <label htmlFor={id + "-lastName"}>First Name</label>
+      <div>
+        <input
+          id={id + "-lastName"}
+          name="lastName"
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
+        />
+      </div>
+
       <p>{fullName}</p>
     </form>
   );
 };
 
 const Good = () => {
+  const id = useId();
   const [firstName, setFirstName] = useState("John");
   const [lastName, setLastName] = useState("Smith");
 
@@ -50,16 +62,26 @@ const Good = () => {
 
   return (
     <form>
-      <input
-        name="firstName"
-        value={firstName}
-        onChange={(event) => setFirstName(event.target.value)}
-      />
-      <input
-        name="lastName"
-        value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
-      />
+      <label htmlFor={id + "-firstName"}>First Name</label>
+      <div>
+        <input
+          id={id + "-firstName"}
+          name="firstName"
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
+        />
+      </div>
+
+      <label htmlFor={id + "-lastName"}>First Name</label>
+      <div>
+        <input
+          id={id + "-lastName"}
+          name="lastName"
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
+        />
+      </div>
+
       <p>{fullName}</p>
     </form>
   );
