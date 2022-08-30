@@ -38,8 +38,11 @@ React にはいくつかの built-in Hooks が存在する。
 
 ## useEffect が不要なパターン
 
-- レンダリングでデータを変更する場合 (You don’t need Effects to transform data for rendering.)
-- ユーザーイベントをハンドルする場合 (You don’t need Effects to handle user events.)
+- ユーザーイベントをハンドルする場合 (You don’t need Effects to handle user events.) useEffect -> eventHandler
+- レンダリングでデータを変更する場合 (You don’t need Effects to transform data for rendering.) useEffect -> useMemo
+- 親コンポーネントとやり取りをする場合 (You don't need useEffects for communicating with parents) useEffect -> eventHandler
+- 外部のデータをサブスクライブする場合 (You don't need useEffects for subscribing to external stores) useEffect -> useSyncExternalStore
+- アプリケーションを初期化する場合 (You don't need useEffect for initializing global singletons) useEffect -> justCallIt
 
 上記のコモンケースでは Effects は不要です。
 
@@ -120,6 +123,68 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 このような場合に問題が起こらないように cleanup function を利用するのが望ましいです。
 
 このようなパターンは、カスタム Hook として定義することもできます。
+
+React Docs (BETA) ではこのパターンは　 useEffect の利用ケースだと紹介していますが、David の動画ではこのケースにおいても Goodbye, useEffect できると述べています。 (You don't need useEffect for fetching data.) useEffect -> renderAsYouFetch
+
+#### Remix
+
+```ts
+import { useLoaderData } from "@remix-run/react";
+import { json } from "@remix-run/node";
+import { getItems } from "../storeApi";
+
+export const loader = async () => {
+  const items = await getItems();
+  return json(items);
+};
+
+export default function Store() {
+  const items = useLoaderData();
+  // ...
+}
+```
+
+#### Next.js
+
+```ts
+import { getItems } from "../storeApi";
+
+function Store({ items }) {
+  //
+}
+
+export async function getServerSideProps() {
+  const items = await getItems();
+  return { props: { items } };
+}
+
+export default Store;
+```
+
+#### React Query (Highly recommended)
+
+```ts
+import { useQuery, useQueryClient } from "react-query";
+
+function Store() {
+  const queryClient = useQueryClient();
+
+  return (
+    <button
+      onClick={() => {
+        queryClient.prefetchQuery("items", getItems);
+      }}
+    >
+      See items
+    </button>
+  );
+}
+
+function Items() {
+  const { data } = useQuery("items", getItems);
+  //
+}
+```
 
 ## 参考
 
