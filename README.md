@@ -119,6 +119,8 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 検索フィールドに hello と打ち込む場合に、 h / he / hel / hell / hello という情報が渡されます。ただし、それぞれの fetch のレスポンスが返ってくる順番は保証されていません。時には hello の結果の後に hell の結果が返ってきます。
 このような場合に問題が起こらないように cleanup function を利用するのが望ましいです。
 
+このようなパターンは、カスタム Hook として定義することもできます。
+
 ## 参考
 
 You Might Not Need an Effect
