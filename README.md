@@ -38,12 +38,12 @@ React にはいくつかの built-in Hooks が存在する。
 
 ## useEffect が不要なパターン
 
-- レンダリングでデータを変更する場合
-- ユーザーイベントをハンドルする場合
+- レンダリングでデータを変更する場合 (You don’t need Effects to transform data for rendering.)
+- ユーザーイベントをハンドルする場合 (You don’t need Effects to handle user events.)
 
 上記のコモンケースでは Effects は不要です。
 
-Effects は外部のシステムとデータを同期させる場合に必要とされます。
+Effects は外部のシステムとデータを同期させる場合に必要とされます。 (You do need Effects to synchronize with external systems.)
 ただしこのパターンに関して、David Khourshid は react-query を使うことで useEffect を不要にできると語っています。
 
 以下では、各パターンに関して実際のコードを使って見ていきます。
@@ -112,6 +112,12 @@ Effects の結果を別の Effects で利用する（chain of Effects）はレ�
 かつて useEffect の中で subscribe / unsubscribe していた処理は、 useSyncExternalStore を使って書けるようになったという紹介です。
 
 ### Fetching data
+
+これまでの内容に従うと、ロジックはイベントハンドラーに引き渡すべきだと考えるかもしれませんが、たとえば query parameter を元にデータを取得するケースについては、page や query の内容でネットワークから情報を取得して表示し続けたいはずです。これが Effects です。
+
+ただし、race condition と呼ばれるケースを意識する必要があります。
+検索フィールドに hello と打ち込む場合に、 h / he / hel / hell / hello という情報が渡されます。ただし、それぞれの fetch のレスポンスが返ってくる順番は保証されていません。時には hello の結果の後に hell の結果が返ってきます。
+このような場合に問題が起こらないように cleanup function を利用するのが望ましいです。
 
 ## 参考
 
