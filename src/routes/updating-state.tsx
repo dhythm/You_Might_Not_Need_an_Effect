@@ -38,7 +38,7 @@ const Bad = () => {
         />
       </div>
 
-      <label htmlFor={id + "-lastName"}>First Name</label>
+      <label htmlFor={id + "-lastName"}>Last Name</label>
       <div>
         <input
           id={id + "-lastName"}
@@ -72,7 +72,7 @@ const Good = () => {
         />
       </div>
 
-      <label htmlFor={id + "-lastName"}>First Name</label>
+      <label htmlFor={id + "-lastName"}>Last Name</label>
       <div>
         <input
           id={id + "-lastName"}
